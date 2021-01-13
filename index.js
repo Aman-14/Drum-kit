@@ -5,12 +5,15 @@ var buttons = document.querySelectorAll("button");
 for (var i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener("click", function () {
     soundPlay(this.innerHTML);
+    addAnimation(this.innerHTML);
   });
 }
 
 
 document.addEventListener("keypress" , function(event) {
     soundPlay(event.key);
+    addAnimation(event.key);
+
   });
 
 
@@ -58,4 +61,13 @@ function soundPlay(press)
 
   } 
     
+}
+
+function addAnimation(button)
+{
+  var selected = document.querySelector("."+button);
+  selected.classList.add("pressed");
+  setTimeout(function() {
+    selected.classList.remove("pressed");
+  } , 100);
 }
